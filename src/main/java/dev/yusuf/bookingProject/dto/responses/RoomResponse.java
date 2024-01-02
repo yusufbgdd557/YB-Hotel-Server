@@ -1,7 +1,6 @@
 package dev.yusuf.bookingProject.dto.responses;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -23,7 +22,7 @@ public class RoomResponse {
 
     private String photo;
 
-    private List<BookedRoomResponse> bookedRoomResponses;
+    private List<BookingResponse> bookingRespons;
 
     public RoomResponse(Long id, String roomType, BigDecimal roomPrice) {
         this.id = id;

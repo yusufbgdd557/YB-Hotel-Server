@@ -1,6 +1,6 @@
 package dev.yusuf.bookingProject.controller;
 
-import dev.yusuf.bookingProject.business.abstracts.BookedRoomService;
+import dev.yusuf.bookingProject.business.abstracts.BookingService;
 import dev.yusuf.bookingProject.business.abstracts.RoomService;
 import dev.yusuf.bookingProject.dto.responses.RoomResponse;
 import dev.yusuf.bookingProject.exception.PhotoRetrievalException;
@@ -35,7 +35,7 @@ public class RoomController {
     private final RoomService roomService;
 
     @Autowired
-    private final BookedRoomService bookedRoomService;
+    private final BookingService bookingService;
 
     @PostMapping("/add/new-room")
     public ResponseEntity<RoomResponse> addNewRoom (
@@ -92,7 +92,7 @@ public class RoomController {
     }
 
     private List<BookedRoom> getAllBookedRoomsByRoomId(Long roomId) {
-        return this.bookedRoomService.getAllBookedRoomsByRoomId(roomId);
+        return this.bookingService.getAllBookedRoomsByRoomId(roomId);
     }
     @DeleteMapping("/delete/room/{roomId}")
     public ResponseEntity<Void> deleteRoom(@PathVariable("roomId") Long roomId) {

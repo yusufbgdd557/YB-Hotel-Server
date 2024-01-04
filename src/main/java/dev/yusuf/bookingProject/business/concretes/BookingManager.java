@@ -3,6 +3,7 @@ package dev.yusuf.bookingProject.business.concretes;
 import dev.yusuf.bookingProject.business.abstracts.BookingService;
 import dev.yusuf.bookingProject.business.abstracts.RoomService;
 import dev.yusuf.bookingProject.exception.InvalidBookingRequestException;
+import dev.yusuf.bookingProject.exception.ResourceNotFoundException;
 import dev.yusuf.bookingProject.model.BookedRoom;
 import dev.yusuf.bookingProject.model.Room;
 import dev.yusuf.bookingProject.repository.BookingRepository;
@@ -58,9 +59,9 @@ public class BookingManager implements BookingService {
 
     @Override
     public BookedRoom findByBookingConfirmationCode(String bookingConfirmationCode) {
-        return bookingRepository.findByBookingConfirmationCode(bookingConfirmationCode);
+        return bookingRepository.findByBookingConfirmationCode(bookingConfirmationCode).orElseThrow(() -> new ResourceNotFoundException("No booking found with booking code : " + bookingConfirmationCode));
     }
-    
+
     private boolean isRoomAvailable(BookedRoom bookingRequest, List<BookedRoom> existingBookings) {
         return existingBookings.stream().noneMatch(currentBooking ->
                 (bookingRequest.getCheckInDate().isBefore(currentBooking.getCheckOutDate()) ||

@@ -22,7 +22,7 @@ public class RoomResponse {
 
     private String photo;
 
-    private List<BookingResponse> bookingRespons;
+    private List<BookingResponse> bookingResponse;
 
     public RoomResponse(Long id, String roomType, BigDecimal roomPrice) {
         this.id = id;

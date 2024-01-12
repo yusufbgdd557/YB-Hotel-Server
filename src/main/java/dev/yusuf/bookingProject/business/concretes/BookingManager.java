@@ -30,6 +30,11 @@ public class BookingManager implements BookingService {
     }
 
     @Override
+    public List<BookedRoom> getBookingsByUserEmail(String email) {
+        return bookingRepository.findByGuestEmail(email);
+    }
+
+    @Override
     public List<BookedRoom> getAllBookedRoomsByRoomId(Long roomId) {
         return bookingRepository.findByRoomId(roomId);
     }

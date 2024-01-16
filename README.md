@@ -50,7 +50,9 @@ The Booking Project is a comprehensive solution for managing hotels room booking
 
 **Booking Process**
 
-![Booking Process](https://github.com/yusufbgdd557/YB-Hotel-Server/assets/45573977/2d9d49a3-884f-44c1-ba87-54cbea5b2fee)
+![Booking Process](https://github.com/yusufbgdd557/YB-Hotel-Server/assets/45573977/9647aea5-16fb-4646-9482-555291d9f5a6)
+
+
 *A screenshot illustrating the booking process.*
 
 **Admin Panel**

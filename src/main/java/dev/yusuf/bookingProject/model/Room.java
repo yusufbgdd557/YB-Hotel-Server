@@ -27,6 +27,8 @@ public class Room {
 
     private Boolean isBooked = false;
 
+    private String roomDescription;
+
     @Lob
     private Blob photo;
 

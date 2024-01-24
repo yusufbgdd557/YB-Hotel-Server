@@ -8,6 +8,7 @@ import dev.yusuf.bookingProject.repository.RoleRepository;
 import dev.yusuf.bookingProject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -83,4 +84,36 @@ public class UserManager implements UserService {
         return userRepository.findByEmail(email).orElseThrow(
                 () -> new UsernameNotFoundException("User not found!"));
     }
+
+
+//    @Override
+//    @TransactionalnewPassword
+//    public void updatePassword(String username, String ) {
+//        User theUser = userRepository.findByEmail(username)
+//                .orElseThrow(() -> new ResourceNotFoundException("Person not found with username: " + username));
+//
+//        // Update the password
+//        theUser.setPassword(newPassword);
+//        userRepository.save(theUser);
+//    }
+
+    @Override
+    public void changePassword(String email, String currentPassword, String newPassword) {
+        // Retrieve user from the database
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with the following email: " + email));
+
+        // Validate the current password
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new BadCredentialsException("Invalid current password");
+        }
+
+        // Update the password with the new one
+        user.setPassword(passwordEncoder.encode(newPassword));
+
+        // Save the updated user
+        userRepository.save(user);
+    }
+
+
 }

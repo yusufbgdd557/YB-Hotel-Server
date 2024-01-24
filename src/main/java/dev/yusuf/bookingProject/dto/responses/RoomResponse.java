@@ -22,6 +22,8 @@ public class RoomResponse {
 
     private String photo;
 
+    private String roomDescription;
+
     private List<BookingResponse> bookingResponse;
 
     public RoomResponse(Long id, String roomType, BigDecimal roomPrice) {
@@ -30,12 +32,12 @@ public class RoomResponse {
         this.roomPrice = roomPrice;
     }
 
-    public RoomResponse(Long id, String roomType, BigDecimal roomPrice, Boolean isBooked, byte[] photoBytes) {
+    public RoomResponse(Long id, String roomType, BigDecimal roomPrice, Boolean isBooked, byte[] photoBytes, List<BookingResponse> bookingResponse ) {
         this.id = id;
         this.roomType = roomType;
         this.roomPrice = roomPrice;
         this.isBooked = isBooked;
         this.photo = photoBytes != null ? Base64.encodeBase64String(photoBytes) : null;
-        //this.bookedRoomResponses = bookedRoomResponses;
+        this.bookingResponse = bookingResponse;
     }
 }

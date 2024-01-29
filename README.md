@@ -61,3 +61,5 @@ The Booking Project is a comprehensive solution for managing hotels room booking
 *A screenshot illustrating a feature of Admin Panel.*
 
 
+
+P.S. : Website to generate secret key : https://www.grc.com/passwords.htm
